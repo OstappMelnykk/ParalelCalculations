@@ -7,31 +7,13 @@ namespace Task5
         static void Main(string[] args)
         {
             int INF = int.MaxValue; // Нескінченність
-            int V = 5;
+            int V = 1000;
             int[,] graph = GenerateRandomGraph(V, INF);
 
-            for (int i = 0; i < V; i++)
-            {
-                for (int j = 0; j < V; j++)
-                {
-                    if (graph[i, j] == INF)
-                    {
-                        Console.Write("inf" + "\t");
-                    }
-                    else
-                    {
-
-                        Console.Write(graph[i, j] + "\t");
-                    }
-
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine("=====================");
-
+            
             MeasureTime(() => { FloydAlgorithm(graph, V, INF);});
 
-            foreach(var num in new[] { 2/*, 4, 8, 16, 32, 64*/})
+            foreach(var num in new[] { 2, 4, 8, 16, 32, 64 })
                 MeasureTime(() => { ParallelFloydAlgorithm(graph, V, INF, num); Console.Write(num.ToString() + " Threads:   "); });         
         }
         
@@ -53,24 +35,6 @@ namespace Task5
                     }
                 }
             }
-
-            for (int i = 0; i < V; i++)
-            {
-                for (int j = 0; j < V; j++)
-                {
-                    if (graph[i, j] == INF)
-                    {
-                        Console.Write("inf" + "\t");
-                    }
-                    else
-                    {
-
-                        Console.Write(graph[i, j] + "\t");
-                    }
-
-                }
-                Console.WriteLine();
-            }
         }
 
         static void ParallelFloydAlgorithm(int[,] graph, int V, int INF, int numThreads)
@@ -90,44 +54,16 @@ namespace Task5
                     }
                 }
             });
-
-
-            
-
-            for (int i = 0; i < V; i++)
-            {
-                for (int j = 0; j < V; j++)
-                {
-                    if (graph[i, j] == INF)
-                    {
-                        Console.Write("inf" + "\t");
-                    }
-                    else {
-
-                        Console.Write(graph[i, j] + "\t");
-                    }
-                    
-                }
-                Console.WriteLine();
-            }
         }
 
         static int[,] GenerateRandomGraph(int V, int INF, int range = 1001){
             Random random = new Random();
             int[,] graph = new int[V, V];
 
-            for (int i = 0; i < V; i++)
-            {
-                for (int j = 0; j < V; j++)
-                {
-                    if (i == j)
-                    {
-                        graph[i, j] = 0; // Diagonal elements are 0
-                    }
-                    else
-                    {
-                        graph[i, j] = (random.Next(100) < 75) ? random.Next(1, 10) : INF;
-                    }
+            for (int i = 0; i < V; i++){
+                for (int j = 0; j < V; j++){
+                    if (i == j) graph[i, j] = 0;
+                    else graph[i, j] = (random.Next(100) < 75) ? random.Next(1, 10) : INF;                
                 }
             }
 
@@ -179,6 +115,7 @@ namespace Task5
             }
         }*/
         #endregion
+        
     }
 }
 
