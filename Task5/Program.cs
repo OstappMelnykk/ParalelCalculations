@@ -56,14 +56,14 @@ namespace Task5
             });
         }
 
-        static int[,] GenerateRandomGraph(int V, int INF, int range = 1001){
+        static int[,] GenerateRandomGraph(int V, int INF){
             Random random = new Random();
             int[,] graph = new int[V, V];
 
             for (int i = 0; i < V; i++){
                 for (int j = 0; j < V; j++){
                     if (i == j) graph[i, j] = 0;
-                    else graph[i, j] = (random.Next(100) < 75) ? random.Next(1, 10) : INF;                
+                    else graph[i, j] = (random.Next(100) < 75) ? random.Next(1, 1000001) : INF;                
                 }
             }
 
