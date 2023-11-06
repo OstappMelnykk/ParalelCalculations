@@ -46,8 +46,14 @@ namespace Task6
 
             MeasureTime(() => { FindShortestPaths(graph, startNode); });
 
-            foreach (var num in new[] { 2, 4, 8, 16, 32, 64 })
-                MeasureTime(() => { FindShortestPathsParallel(graph, startNode, num); ; Console.Write(num.ToString() + " Threads:   "); });
+
+
+            foreach (var num in new[] { 2, 4, 8})
+                MeasureTime(() => 
+                { 
+                    FindShortestPathsParallel(graph, startNode, num);
+                    Console.Write(num.ToString() + " Threads:   "); 
+                });
         }
 
         public static Dictionary<string, int> FindShortestPaths(Dictionary<string, Dictionary<string, int>> graph, string startNode)
