@@ -4,6 +4,7 @@ using System.Diagnostics;
 namespace Task6
 {
 
+
     internal class Program
     {
         public static Dictionary<string, Dictionary<string, int>> GenerateRandomGraph(int numVertices, int numEdges)

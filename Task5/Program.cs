@@ -4,6 +4,7 @@ namespace Task5
 {
     internal class Program
     {
+
         static void Main(string[] args)
         {
             int INF = int.MaxValue; // Нескінченність
