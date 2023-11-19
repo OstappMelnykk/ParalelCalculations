@@ -6,9 +6,9 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            const int m = 1000;
-            const int n = 1000;
-            const int q = 1000;
+            const int m = 2000;
+            const int n = 2000;
+            const int q = 2000;
 
             int[,] m1 = new int[m, n];
             int[,] m2 = new int[n, q];
@@ -24,7 +24,9 @@ namespace Task2
             int cols1 = m1.GetLength(1);
             int cols2 = m2.GetLength(1);
 
-            MeasureTime(() => {
+            Console.WriteLine("Start");
+            MeasureTime(() =>
+            {
                 for (int i = 0; i < rows1; i++)
                 {
                     for (int j = 0; j < cols2; j++)
@@ -108,7 +110,10 @@ namespace Task2
             int cols = m.GetLength(1);
             Random random = new Random();
             for (int i = 0; i < rows; i++)
-                for (int j = 0; j < cols; j++) m[i, j] = random.Next(0, 5);
+            {
+                //for (int j = 0; j < cols; j++) m[i, j] = random.Next(0, 5);
+                for (int j = 0; j < cols; j++) m[i, j] = 2;
+            }
         }
 
     }
